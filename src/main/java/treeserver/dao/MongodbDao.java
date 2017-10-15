@@ -3,6 +3,8 @@ package treeserver.dao;
 import treeserver.bean.Bean;
 import treeserver.bean.Tree;
 
+import java.util.List;
+
 /**
  * Created by kevinyin on 2017/10/15.
  */
@@ -19,5 +21,7 @@ public interface MongodbDao {
     boolean updateBean(Bean bean);
 
     boolean removeBeanById(String id);
+
+    List<Bean> queryAllBeans();
 
 }

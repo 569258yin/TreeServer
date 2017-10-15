@@ -10,6 +10,8 @@ import treeserver.dao.MongodbDao;
 
 import javax.annotation.Resource;
 
+import java.util.List;
+
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 import static org.springframework.data.mongodb.core.query.Update.update;
@@ -62,5 +64,10 @@ public class MongodbDaoImpl implements MongodbDao{
     public boolean removeBeanById(String id) {
         WriteResult writeResult = mongoOperations.remove(query(where("_id").is(id)), Bean.class, Constans.TREE_COLLECTION);
         return writeResult.getN() == 1;
+    }
+
+    @Override
+    public List<Bean> queryAllBeans() {
+        return mongoOperations.findAll(Bean.class,Constans.TREE_COLLECTION);
     }
 }

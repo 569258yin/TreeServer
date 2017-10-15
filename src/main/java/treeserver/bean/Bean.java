@@ -1,5 +1,7 @@
 package treeserver.bean;
 
+import treeserver.utils.JsonUtils;
+
 import java.util.UUID;
 
 /**
@@ -14,7 +16,7 @@ public class Bean {
 
     public Bean(String json) {
         this.id = UUID.randomUUID().toString()+json.length();
-        this.json = json;
+        this.json = JsonUtils.compress(json);
     }
 
     public String getId() {
@@ -30,6 +32,6 @@ public class Bean {
     }
 
     public void setJson(String json) {
-        this.json = json;
+        this.json = JsonUtils.compress(json);
     }
 }
