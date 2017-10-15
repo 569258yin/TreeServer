@@ -49,9 +49,9 @@ public class TreeController extends BaseController {
     }
 
     @RequestMapping(value = "/trees", method = RequestMethod.GET)
-    public HttpResult getTrees() {
+    public String getTrees() {
         List<Bean> beans = mongodbDao.queryAllBeans();
-        return HttpResult.success(beans);
+        return JsonUtils.dealChars(JsonUtils.generateJson(HttpResult.success(beans)));
     }
 
     @RequestMapping(value = "/tree", method = RequestMethod.PUT)
@@ -71,7 +71,7 @@ public class TreeController extends BaseController {
             return HttpResult.error("更新出错，请稍后重试");
         }
     }
-    @RequestMapping(value = "/deltree", method = RequestMethod.GET)
+    @RequestMapping(value = "/tree", method = RequestMethod.DELETE)
     public HttpResult deleteTree() {
         String id = StringUtils.trimToEmpty(httpServletRequest.getParameter("id"));
         if (StringUtils.isEmpty(id)) {
