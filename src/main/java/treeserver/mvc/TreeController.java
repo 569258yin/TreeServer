@@ -51,7 +51,7 @@ public class TreeController extends BaseController {
     @RequestMapping(value = "/trees", method = RequestMethod.GET)
     public String getTrees() {
         List<Bean> beans = mongodbDao.queryAllBeans();
-        return JsonUtils.dealChars(JsonUtils.generateJson(HttpResult.success(beans)));
+        return JsonUtils.replaceBlank(JsonUtils.generateJson(HttpResult.success(beans)));
     }
 
     @RequestMapping(value = "/tree", method = RequestMethod.PUT)

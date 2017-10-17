@@ -17,7 +17,7 @@ public class JsonUtilsTest {
     public void testDecodeJson(){
         File file = new File("flare.json");
         String json = txt2String(file);
-        json = JsonUtils.compress(json);
+        json = JsonUtils.replaceBlank(json);
         System.out.println(json);
     }
 

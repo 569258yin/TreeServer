@@ -16,7 +16,7 @@ public class Bean {
 
     public Bean(String json) {
         this.id = UUID.randomUUID().toString()+json.length();
-        this.json = JsonUtils.compress(json);
+        this.json = JsonUtils.replaceBlank(json);
     }
 
     public String getId() {
@@ -32,6 +32,6 @@ public class Bean {
     }
 
     public void setJson(String json) {
-        this.json = JsonUtils.compress(json);
+        this.json = JsonUtils.replaceBlank(json);
     }
 }
